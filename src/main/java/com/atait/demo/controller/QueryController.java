@@ -1,10 +1,13 @@
 package com.atait.demo.controller;
 
 import com.atait.demo.business.IJobDataBusiness;
+import com.atait.demo.business.constants.Gender;
+import com.atait.demo.business.constants.SortType;
 import com.atait.demo.response.BaseResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +22,19 @@ public class QueryController {
 
 
     @GetMapping("")
-    public ResponseEntity<BaseResponse> query(){
-        return business.onQuery();
+    public ResponseEntity<BaseResponse> query(
+            @RequestParam(required = false) String min_salary,
+            @RequestParam(required = false) String max_salary,
+            @RequestParam(required = false) String job_title,
+            @RequestParam(required = false) Gender gender,
+            @RequestParam(required = false) String location,
+            @RequestParam(required = false) String fields,
+            @RequestParam(required = false) String sort,
+            @RequestParam(required = false) SortType sortType
+    ) throws Exception {
+        return business.onQuery(
+                min_salary, max_salary, job_title, gender, location, fields, sort, sortType
+        );
     }
 
 }

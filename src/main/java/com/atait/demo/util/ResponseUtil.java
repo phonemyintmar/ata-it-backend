@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Component
 public class ResponseUtil {
 
-    public static ResponseEntity<?> onDefaultSuccess(Object result) {
+    public static ResponseEntity<BaseResponse> onDefaultSuccess(Object result) {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResult(result);
         baseResponse.setCode(ResponseCode.SUCCESS.code());
@@ -20,7 +20,7 @@ public class ResponseUtil {
         return ResponseEntity.ok(baseResponse);
     }
 
-    public static ResponseEntity<?> onSuccess(ResponseCode.ResponseCodeDto responseCode, Object result) {
+    public static ResponseEntity<BaseResponse> onSuccess(ResponseCode.ResponseCodeDto responseCode, Object result) {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResult(result);
         baseResponse.setCode(responseCode.code());
@@ -29,7 +29,7 @@ public class ResponseUtil {
         return ResponseEntity.ok(baseResponse);
     }
 
-    public static ResponseEntity<?> onError(ResponseCode.ResponseCodeDto responseCode, HttpStatus status) {
+    public static ResponseEntity<BaseResponse> onError(ResponseCode.ResponseCodeDto responseCode, HttpStatus status) {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResult(null);
         baseResponse.setCode(responseCode.code());
@@ -38,7 +38,7 @@ public class ResponseUtil {
         return ResponseEntity.status(status).body(baseResponse);
     }
 
-    public static ResponseEntity<?> on4xxError() {
+    public static ResponseEntity<BaseResponse> on4xxError() {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResult(null);
         baseResponse.setCode(ResponseCode.WRONG_REQUEST.code());
@@ -47,7 +47,7 @@ public class ResponseUtil {
         return ResponseEntity.badRequest().body(baseResponse);
     }
 
-    public static ResponseEntity<?> on5xxError() {
+    public static ResponseEntity<BaseResponse> on5xxError() {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResult(null);
         baseResponse.setCode(ResponseCode.INTERNAL_SERVER_ERROR.code());

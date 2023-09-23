@@ -20,6 +20,10 @@ public class ResponseCode {
 
     public static final ResponseCodeDto RESOURCE_DOES_NOT_EXIST = new ResponseCodeDto("1997","The resource you request does not exist.");
 
+    public static final ResponseCodeDto UNKNOWN_FIELDS = new ResponseCodeDto("1996","Request contains unknown fields for the query.");
+
+    public static final ResponseCodeDto CANNOT_PARSE_FIELDS = new ResponseCodeDto("1995","There was an error in parsing the fields from the request.");
+
 
     @AllArgsConstructor
     public static class ResponseCodeDto{
