@@ -8,8 +8,9 @@ import org.springframework.http.ResponseEntity;
 public interface IJobDataBusiness {
 
     ResponseEntity<BaseResponse> onQuery(
-            String min_salary,
-            String max_salary,
+            Integer min_salary,
+            Integer max_salary,
+            String currency,
             String job_title,
             Gender gender,
             String location,

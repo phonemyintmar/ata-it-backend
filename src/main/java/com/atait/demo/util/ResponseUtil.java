@@ -20,7 +20,7 @@ public class ResponseUtil {
         return ResponseEntity.ok(baseResponse);
     }
 
-    public static ResponseEntity<BaseResponse> onSuccess(ResponseCode.ResponseCodeDto responseCode, Object result) {
+    public static ResponseEntity<BaseResponse> onCustomSuccess(ResponseCode.ResponseCodeDto responseCode, Object result) {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResult(result);
         baseResponse.setCode(responseCode.code());

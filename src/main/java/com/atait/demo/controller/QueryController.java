@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("job_data")
+@RequestMapping("job-data")
 public class QueryController {
 
     private final IJobDataBusiness business;
@@ -20,11 +20,11 @@ public class QueryController {
         this.business = business;
     }
 
-
     @GetMapping("")
     public ResponseEntity<BaseResponse> query(
-            @RequestParam(required = false) String min_salary,
-            @RequestParam(required = false) String max_salary,
+            @RequestParam(required = false) Integer min_salary,
+            @RequestParam(required = false) Integer max_salary,
+            @RequestParam(required = false) String salary_currency,
             @RequestParam(required = false) String job_title,
             @RequestParam(required = false) Gender gender,
             @RequestParam(required = false) String location,
@@ -33,7 +33,7 @@ public class QueryController {
             @RequestParam(required = false) SortType sortType
     ) throws Exception {
         return business.onQuery(
-                min_salary, max_salary, job_title, gender, location, fields, sort, sortType
+                min_salary, max_salary, salary_currency, job_title, gender, location, fields, sort, sortType
         );
     }
 

@@ -9,8 +9,6 @@ import java.util.Map;
 public interface IJobDataRepository {
 
     List<Map<String, Object>> onQuery(
-            String min_salary,
-            String max_salary,
             String job_title,
             Gender gender,
             String location,
